@@ -1,8 +1,10 @@
 require "bundler/setup"
 require 'fixtures/application'
 require 'fixtures/controllers'
+require 'fixtures/constants'
 require 'rspec/rails'
 require "cognito_token_verifier"
+require "support/auth_helper"
 
 #ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 #load File.dirname(__FILE__) + '/schema.rb'
@@ -14,6 +16,8 @@ RSpec.configure do |config|
   # Disable RSpec exposing methods globally on `Module` and `main`
   config.disable_monkey_patching!
   config.expose_dsl_globally = true
+
+  config.include AuthHelper, type: :controller
 
   config.expect_with :rspec do |c|
     c.syntax = :expect

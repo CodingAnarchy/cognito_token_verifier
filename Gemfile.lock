@@ -3,6 +3,7 @@ PATH
   specs:
     cognito_token_verifier (0.1.0)
       activesupport (>= 4.2)
+      jwt
 
 GEM
   remote: https://rubygems.org/
@@ -32,6 +33,7 @@ GEM
     erubi (1.8.0)
     i18n (1.5.3)
       concurrent-ruby (~> 1.0)
+    jwt (2.1.0)
     loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
