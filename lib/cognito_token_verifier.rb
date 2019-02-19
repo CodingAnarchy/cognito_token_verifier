@@ -1,21 +1,20 @@
 require "cognito_token_verifier/version"
+require "cognito_token_verifier/config"
 
 module CognitoTokenVerifier
-  class Error < StandardError; end
-
   class << self
     attr_accessor :config
+  end
 
-    def config
-      @config ||= Config.new
-    end
+  def self.config
+    @config ||= Config.new
+  end
 
-    def reset
-      @config = Config.new
-    end
+  def self.reset
+    @config = Config.new
+  end
 
-    def configure
-      yield(config)
-    end
+  def self.configure
+    yield(config)
   end
 end
