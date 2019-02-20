@@ -18,7 +18,7 @@ module CognitoTokenVerifier
     end
   end
   
-  class TokenExpired < CognitoTokenVerifier::Error
+  class TokenExpired < StandardError
     def message
       "Cognito token has expired.  Please reauthorize and try again."
     end
