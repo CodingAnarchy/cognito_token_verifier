@@ -2,16 +2,17 @@ require 'rest-client'
 
 module CognitoTokenVerifier
   class Config
-    attr_accessor :aws_region, :user_pool_id, :allow_expired
+    attr_accessor :aws_region, :user_pool_id, :allow_expired_tokens
 
     def initialize
       @aws_region = nil
       @user_pool_id = nil
-      @allow_expired = false
+      @token_use = 'all'
+      @allow_expired_tokens = false
     end
 
-    def allow_expired?
-      allow_expired
+    def allow_expired_tokens?
+      allow_expired_tokens
     end
 
     def jwks
@@ -20,10 +21,14 @@ module CognitoTokenVerifier
       # TODO: rescue RestClient and JSON errors here to present a more user-friendly error
     end
 
+    def iss
+      "https://cognito-idp.#{aws_region}.amazonaws.com/#{user_pool_id}"
+    end
+
     private
 
     def jwk_url
-      "https://cognito-idp.#{aws_region}.amazonaws.com/#{user_pool_id}/.well-known/jwks.json"
+      "#{iss}/.well-known/jwks.json"
     end
   end
 end

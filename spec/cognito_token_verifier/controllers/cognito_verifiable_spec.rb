@@ -24,9 +24,9 @@ describe CognitoTokenVerifier::Controllers::CognitoVerifiable, type: :controller
 
     context "with expired token check bypassed" do
       around :each do |example|
-        CognitoTokenVerifier.config.allow_expired = true
+        CognitoTokenVerifier.config.allow_expired_tokens = true
         example.run
-        CognitoTokenVerifier.config.allow_expired = false
+        CognitoTokenVerifier.config.allow_expired_tokens = false
       end
 
       describe "before_action verify_cognito_token" do
