@@ -7,11 +7,6 @@ require "cognito_token_verifier"
 require "support/auth_helper"
 require "byebug"
 
-CognitoTokenVerifier.configure do |config|
-  config.aws_region = 'us-west-2'
-  config.user_pool_id = 'us-west-2_94KXV27rr'
-end
-
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
@@ -21,6 +16,14 @@ RSpec.configure do |config|
   config.expose_dsl_globally = true
 
   config.include AuthHelper, type: :controller
+
+  config.before(:each) do
+    CognitoTokenVerifier.reset
+    CognitoTokenVerifier.configure do |config|
+      config.aws_region = 'us-west-2'
+      config.user_pool_id = 'us-west-2_94KXV27rr'
+    end
+  end
 
   config.expect_with :rspec do |c|
     c.syntax = :expect

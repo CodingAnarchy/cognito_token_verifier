@@ -2,13 +2,17 @@ require 'rest-client'
 
 module CognitoTokenVerifier
   class Config
-    attr_accessor :aws_region, :user_pool_id, :allow_expired_tokens
+    attr_accessor :aws_region, :user_pool_id, :token_use, :allow_expired_tokens
 
     def initialize
       @aws_region = nil
       @user_pool_id = nil
       @token_use = 'all'
       @allow_expired_tokens = false
+    end
+
+    def any_token_use?
+      ['all', 'any', ['id', 'access']].any?{|usage| usage == token_use }
     end
 
     def allow_expired_tokens?
