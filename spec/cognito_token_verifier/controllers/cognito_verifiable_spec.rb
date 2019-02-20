@@ -33,6 +33,16 @@ describe CognitoTokenVerifier::Controllers::CognitoVerifiable, type: :controller
           get :index
         end
       end
+
+      it "raises an IncorrectTokenType error if the token type doesn't match" do
+        CognitoTokenVerifier.config.token_use = 'access'
+        expect { get :index }.to raise_error(CognitoTokenVerifier::IncorrectTokenType)
+      end
+
+      it "raises an InvalidIss error if the ISS referent doesn't match" do
+        allow_any_instance_of(CognitoTokenVerifier::Token).to receive(:valid_iss?).and_return(false)
+        expect { get :index }.to raise_error(CognitoTokenVerifier::InvalidIss)
+      end
     end
   end
 end
