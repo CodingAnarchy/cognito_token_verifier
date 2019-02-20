@@ -1,8 +1,8 @@
-require 'cognito_token_verifier/controllers/cognito_verifiable'
+require 'cognito_token_verifier/controller_macros'
 
-describe CognitoTokenVerifier::Controllers::CognitoVerifiable, type: :controller do
+describe CognitoTokenVerifier::ControllerMacros, type: :controller do
   controller(TestController) do
-    include CognitoTokenVerifier::Controllers::CognitoVerifiable
+    include CognitoTokenVerifier::ControllerMacros
 
     def index; end
   end

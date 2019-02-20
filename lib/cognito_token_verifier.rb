@@ -1,6 +1,8 @@
 require "cognito_token_verifier/version"
 require "cognito_token_verifier/errors"
 require "cognito_token_verifier/config"
+require "cognito_token_verifier/token"
+require "cognito_token_verifier/controller_macros"
 
 module CognitoTokenVerifier
   class << self
