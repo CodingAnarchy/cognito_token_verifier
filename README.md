@@ -20,7 +20,43 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This gem provides a `Token` class that will verify and decode a token, as well as controller macros to run verification on tokens automatically.  To use, first configure the gem with the appropriate AWS configuration, as below:
+
+```ruby
+CognitoTokenVerifier.configure do |config|
+  config.aws_region = 'us-west-2'
+  config.user_pool_id = 'your_user_pool_id'
+  config.token_use = 'id' # acceptable options are 'id' and 'access'; can be an array for both options - defaults to allowing either cognito token type
+end
+```
+
+You can then include the controller macros in your controller and override the methods to handle expired and invalid tokens (or you can skip this step and allow errors to be raised).
+
+```ruby
+class ExampleController < ActionController::Base
+  include CognitoTokenVerifier::ControllerMacros
+
+  ...
+
+  private
+
+  def handle_expired_token(exception)
+    # Do what you want here
+  end
+
+  def handle_invalid_token(exception)
+    # Do what you want here
+  end
+end
+```
+
+You can also access the Cognito token in the controller yourself for additional verification (such as custom attributes). For example:
+
+```ruby
+   def handle_custom_attribute
+     cognito_token.decoded_token['custom:attr'] == <some_value>
+  end
+```
 
 ## Development
 
