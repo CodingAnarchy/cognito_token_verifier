@@ -1,4 +1,11 @@
 source "https://rubygems.org"
 
-gemspec
-gem "rails", "~> 5.1.0"
+gem "activesupport", "~> 5.1.0"
+gem "json-jwt", "~> 1.1"
+gem "rest-client", "~> 2.0"
+
+gem "byebug"
+gem "bundler", "~> 2.0"
+gem "rake", "~> 11.0"
+gem "rspec-rails", "~> 3.0"
+gem "actionpack", "~>= 5.1.0"
