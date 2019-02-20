@@ -1,4 +1,5 @@
 require "cognito_token_verifier/version"
+require "cognito_token_verifier/errors"
 require "cognito_token_verifier/config"
 
 module CognitoTokenVerifier

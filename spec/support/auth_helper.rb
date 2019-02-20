@@ -1,5 +1,3 @@
-require 'jwt'
-
 module AuthHelper
   def api_request_authorize
     request.accept = 'application/json'

@@ -5,9 +5,12 @@ require 'fixtures/constants'
 require 'rspec/rails'
 require "cognito_token_verifier"
 require "support/auth_helper"
+require "byebug"
 
-#ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
-#load File.dirname(__FILE__) + '/schema.rb'
+CognitoTokenVerifier.configure do |config|
+  config.aws_region = 'us-west-2'
+  config.user_pool_id = 'us-west-2_94KXV27rr'
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
