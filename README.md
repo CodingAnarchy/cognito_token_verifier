@@ -1,4 +1,4 @@
-# CognitoTokenVerifier
+# CognitoTokenVerifier [![Build Status](https://travis-ci.org/CodingAnarchy/cognito_token_verifier.svg?branch=master)](https://travis-ci.org/CodingAnarchy/cognito_token_verifier)
 
 Verify and decode AWS Cognito tokens for use in your Ruby application.
 
