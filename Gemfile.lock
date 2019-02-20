@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     cognito_token_verifier (0.1.0)
-      activesupport (>= 4.2)
+      activesupport (>= 4.2, < 6.0)
       json-jwt (~> 1.1)
       rest-client (~> 2.0)
 
@@ -71,7 +71,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
-    rake (10.5.0)
+    rake (12.3.2)
     rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
@@ -105,11 +105,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionpack (>= 4.2)
+  actionpack (>= 4.2, < 6.0)
   bundler (~> 2.0)
   byebug
   cognito_token_verifier!
-  rake (~> 10.0)
+  rake (>= 10.0, < 13.0)
   rspec-rails (~> 3.0)
 
 BUNDLED WITH
