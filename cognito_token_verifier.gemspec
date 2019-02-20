@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "json-jwt", "~> 1.1"
   spec.add_runtime_dependency "rest-client", "~> 2.0"
 
-  spec.add_development_dependency "byebug"
+  spec.add_development_dependency "byebug", "~> 11.0"
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", [">= 10.0", "< 13.0"]
   spec.add_development_dependency "rspec-rails", "~> 3.0"
