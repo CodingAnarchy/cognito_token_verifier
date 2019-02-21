@@ -20,9 +20,12 @@ module CognitoTokenVerifier
     end
 
     def jwks
-      raise ConfigSetupError.new(self) unless aws_region.present? and user_pool_id.present?
-      @jwks ||= JSON.parse(RestClient.get(jwk_url))
-      # TODO: rescue RestClient and JSON errors here to present a more user-friendly error
+      begin
+        raise ConfigSetupError.new(self) unless aws_region.present? and user_pool_id.present?
+        @jwks ||= JSON.parse(RestClient.get(jwk_url))
+      rescue RestClient::Exception, JSON::JSONError => e
+        raise JWKFetchError
+      end
     end
 
     def iss

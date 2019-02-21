@@ -12,6 +12,12 @@ module CognitoTokenVerifier
     end
   end
 
+  class JWKFetchError < StandardError
+    def message
+      "Error fetching JWKs for your Cognito user pool.  Please verify your configuration of the CognitoTokenVerifier gem."
+    end
+  end
+
   class TokenMissing < CognitoTokenVerifier::Error
     def message
       "Cognito token not provided.  Please retransmit request with Cognito token in authorization header."
