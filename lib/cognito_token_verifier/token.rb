@@ -5,10 +5,13 @@ module CognitoTokenVerifier
     attr_reader :header, :decoded_token
 
     def initialize(jwt)
-      @header= JSON.parse(Base64.decode64(jwt.split('.')[0]))
-      @jwk = JSON::JWK.new(CognitoTokenVerifier.config.jwks["keys"].detect{|jwk| jwk['kid'] == header['kid']})
-      @decoded_token = JSON::JWT.decode(jwt, @jwk)
-      # TODO: rescue errors for JSON/JWK/JWT parsing/decoding to present user-friendly "token could not be decoded" error
+      begin
+        @header= JSON.parse(Base64.decode64(jwt.split('.')[0]))
+        @jwk = JSON::JWK.new(CognitoTokenVerifier.config.jwks["keys"].detect{|jwk| jwk['kid'] == header['kid']})
+        @decoded_token = JSON::JWT.decode(jwt, @jwk)
+      rescue JSON::JWS::VerificationFailed, JSON::JSONError => e
+        raise TokenDecodingError
+      end
     end
 
     def expired?

@@ -23,6 +23,12 @@ module CognitoTokenVerifier
       "Cognito token not provided.  Please retransmit request with Cognito token in authorization header."
     end
   end
+
+  class TokenDecodingError < CognitoTokenVerifier::Error
+    def message
+      "Cognito token could not be decoded. Please ensure the request token is from the correct Cognito user pool and try again." 
+    end
+  end
   
   class TokenExpired < StandardError
     def message
