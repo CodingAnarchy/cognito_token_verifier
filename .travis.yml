@@ -13,3 +13,10 @@ gemfile:
   - gemfiles/rails51.gemfile
   - gemfiles/rails52.gemfile
   - gemfiles/rails6.gemfile
+
+jobs:
+  exclude:
+    - rvm: 2.4.9
+      gemfile: Gemfile
+    - rvm: 2.4.9
+      gemfile: gemfiles/rails6.gemfile
