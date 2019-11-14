@@ -9,7 +9,6 @@ rvm:
 before_install: gem install bundler
 gemfile:
   - Gemfile
-  - gemfiles/rails42.gemfile
   - gemfiles/rails51.gemfile
   - gemfiles/rails52.gemfile
   - gemfiles/rails6.gemfile
