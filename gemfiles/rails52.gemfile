@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem "activesupport", "~> 5.2.0"
-gem "json-jwt", "~> 1.1"
+gem "json-jwt", "~> 1.11"
 gem "rest-client", "~> 2.0"
 
 gem "byebug"
