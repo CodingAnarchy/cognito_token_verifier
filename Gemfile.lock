@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cognito_token_verifier (0.3.0)
+    cognito_token_verifier (0.3.1)
       activesupport (>= 4.2, < 6.1)
       json-jwt (~> 1.11)
       rest-client (~> 2.0)
