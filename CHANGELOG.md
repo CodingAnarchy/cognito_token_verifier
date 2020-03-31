@@ -1,5 +1,13 @@
 # CHANGELOG.md
 
+## 0.3.2 (2020-03-31)
+
+  - Update development version of Rails gems for `actionview` security patch
+
+## 0.3.1 (2020-02-27)
+
+  - Update `nokogiri` version to 1.10.8 for security patches in gem development
+
 ## 0.3.0 (2019-11-14)
 
   - Add Rails 6 support
