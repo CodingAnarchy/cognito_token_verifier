@@ -1,5 +1,11 @@
 # CHANGELOG.md
 
+## 0.4.0 (2020-09-12)
+
+  - Update development version of Rails gems for `actionview` security patch
+  - Remove Rails < 5.2 support due to EOL by Rails team
+  - Remove EOL Ruby 2.4 from test matrix, and add Ruby 2.7
+
 ## 0.3.2 (2020-03-31)
 
   - Update development version of Rails gems for `actionview` security patch
