@@ -3,19 +3,14 @@ sudo: false
 language: ruby
 cache: bundler
 rvm:
-  - 2.4.9
-  - 2.5.7
-  - 2.6.5
+  - 2.5.8
+  - 2.6.6
+  - 2.7.1
 before_install: gem install bundler
 gemfile:
   - Gemfile
-  - gemfiles/rails51.gemfile
   - gemfiles/rails52.gemfile
   - gemfiles/rails6.gemfile
 
-jobs:
-  exclude:
-    - rvm: 2.4.9
-      gemfile: Gemfile
-    - rvm: 2.4.9
-      gemfile: gemfiles/rails6.gemfile
+# jobs:
+#   exclude:
