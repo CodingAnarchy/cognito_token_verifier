@@ -1,4 +1,4 @@
-# CHANGELOG.md
+# CHANGELOG
 
 ## 0.4.0 (2020-09-12)
 
