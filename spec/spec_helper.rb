@@ -7,21 +7,6 @@ require "cognito_token_verifier"
 require "support/auth_helper"
 require "byebug"
 
-if RUBY_VERSION >= '2.6.0'
-  if Rails.version < '5'
-    class ActionController::TestResponse < ActionDispatch::TestResponse
-      def recycle!
-        # hack to avoid MonitorMixin double-initialize error:
-        @mon_mutex_owner_object_id = nil
-        @mon_mutex = nil
-        initialize
-      end
-    end
-  else
-    puts "Monkey patch for ActionController::TestResponse no longer needed"
-  end
-end
-
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
