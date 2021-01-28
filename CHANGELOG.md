@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.5.0 (2021-01-27)
+
+  - Update `nokogiri` version to 1.11 for security patch in gem development
+  - Test against Ruby 3.0 and remove near-EOL Ruby 2.5 from test matrix
+  - Add Rails 6.1 support
+
 ## 0.4.0 (2020-09-12)
 
   - Update development version of Rails gems for `actionview` security patch
