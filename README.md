@@ -1,4 +1,4 @@
-# CognitoTokenVerifier [![Build Status](https://travis-ci.org/CodingAnarchy/cognito_token_verifier.svg?branch=master)](https://travis-ci.org/CodingAnarchy/cognito_token_verifier)
+# CognitoTokenVerifier [![Build Status](https://travis-ci.com/CodingAnarchy/cognito_token_verifier.svg?branch=master)](https://travis-ci.com/CodingAnarchy/cognito_token_verifier)
 
 Verify and decode AWS Cognito tokens for use in your Rails 5.2+ application. Rails versions <= 5.2 are incompatible with the required gemspec as of  0.4+, as they are no longer supported for security fixes by the Rails team.
 
