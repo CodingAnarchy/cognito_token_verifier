@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: "Ruby ${{ matrix.ruby }}, Rails ${{ matrix.rails }}"
+    name: "Ruby ${{ matrix.ruby }}, Gemfile ${{ matrix.gemfile }}"
     runs-on: ubuntu-latest
 
     strategy:
