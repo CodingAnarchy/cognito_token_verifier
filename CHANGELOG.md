@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.6.0 (2022-02-24)
+
+  - Add Rails 7 support
+  - Test against Ruby 3.1
+
 ## 0.5.0 (2021-01-27)
 
   - Update `nokogiri` version to 1.11 for security patch in gem development
