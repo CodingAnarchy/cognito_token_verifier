@@ -28,6 +28,16 @@ module CognitoTokenVerifier
       end
     end
 
+    # TODO Because the load balancer does not encrypt the user claims, we
+    # recommend that you configure the target group to use HTTPS. If you
+    # configure your target group to use HTTP, be sure to restrict the traffic
+    # to your load balancer using security groups. We also recommend that you
+    # verify the signature before doing any authorization based on the claims.
+    # To get the public key, get the key ID from the JWT header and use it to
+    # look up the public key from the endpoint. The endpoint for each AWS Region
+    # is as follows:
+    #  https://public-keys.auth.elb.region.amazonaws.com/key-id
+    # See: https://docs.aws.amazon.com/elasticloadbalancing/latest/application/listener-authenticate-users.html
     def iss
       "https://cognito-idp.#{aws_region}.amazonaws.com/#{user_pool_id}"
     end

@@ -13,8 +13,13 @@ module CognitoTokenVerifier
 
     def cognito_token
       return @cognito_token if @cognito_token.present? # Caching here, so gem user can access token themselves for additional checks
-      raise TokenMissing unless request.headers['authorization'].present?
-      @cognito_token = CognitoTokenVerifier::Token.new(request.headers['authorization'])
+      @cognito_token = CognitoTokenVerifier::Token.new(find_jwt_claims!)
+    end
+
+    # Support cognito authentication off loaded by ALB
+    # https://docs.aws.amazon.com/elasticloadbalancing/latest/application/listener-authenticate-users.html
+    def find_jwt_claims!
+      request.headers['x-amzn-oidc-data'].presence || request.headers['authorization'].presence || raise(TokenMissing)
     end
 
     def verify_cognito_token

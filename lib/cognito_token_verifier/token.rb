@@ -6,10 +6,10 @@ module CognitoTokenVerifier
 
     def initialize(jwt)
       begin
-        @header= JSON.parse(Base64.decode64(jwt.split('.')[0]))
+        @header = JSON.parse(Base64.decode64(jwt.split('.')[0]))
         @jwk = JSON::JWK.new(CognitoTokenVerifier.config.jwks["keys"].detect{|jwk| jwk['kid'] == header['kid']})
         @decoded_token = JSON::JWT.decode(jwt, @jwk)
-      rescue JSON::JWS::VerificationFailed, JSON::JSONError => e
+      rescue JSON::JWS::VerificationFailed, JSON::JSONError
         raise TokenDecodingError
       end
     end
