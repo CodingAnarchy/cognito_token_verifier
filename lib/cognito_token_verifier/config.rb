@@ -15,18 +15,22 @@ module CognitoTokenVerifier
       ['all', 'any', ['id', 'access']].any?{|usage| usage == token_use }
     end
 
+    def validate!
+      raise ConfigSetupError.new(self) unless aws_region.present? and user_pool_id.present?
+    end
+
     def allow_expired_tokens?
       allow_expired_tokens
     end
 
-    def jwks
-      begin
-        raise ConfigSetupError.new(self) unless aws_region.present? and user_pool_id.present?
-        @jwks ||= JSON.parse(RestClient.get(jwk_url))
-      rescue RestClient::Exception, JSON::JSONError => e
-        raise JWKFetchError
-      end
-    end
+    # def jwks
+    #   begin
+    #     raise ConfigSetupError.new(self) unless aws_region.present? and user_pool_id.present?
+    #     @jwks ||= JSON.parse(RestClient.get(jwk_url))
+    #   rescue RestClient::Exception, JSON::JSONError => e
+    #     raise JWKFetchError
+    #   end
+    # end
 
     # TODO Because the load balancer does not encrypt the user claims, we
     # recommend that you configure the target group to use HTTPS. If you
@@ -38,14 +42,14 @@ module CognitoTokenVerifier
     # is as follows:
     #  https://public-keys.auth.elb.region.amazonaws.com/key-id
     # See: https://docs.aws.amazon.com/elasticloadbalancing/latest/application/listener-authenticate-users.html
-    def iss
-      "https://cognito-idp.#{aws_region}.amazonaws.com/#{user_pool_id}"
-    end
+    # def iss
+    #   "https://cognito-idp.#{aws_region}.amazonaws.com/#{user_pool_id}"
+    # end
 
     private
 
-    def jwk_url
-      "#{iss}/.well-known/jwks.json"
-    end
+    # def jwk_url
+    #   "#{iss}/.well-known/jwks.json"
+    # end
   end
 end
