@@ -7,7 +7,7 @@ module CognitoTokenVerifier
     def initialize(jwt)
       begin
         @header = JSON.parse(Base64.decode64(jwt.split('.')[0]))
-        @idp_type = header["signer"].include?("arn:aws:elasticloadbalancing") ? :alb : :cognito
+        @idp_type = header["signer"]&.include?("arn:aws:elasticloadbalancing") ? :alb : :cognito
 
         @jwk = JSON::JWK.new(jwks["keys"].detect{|jwk| jwk['kid'] == header['kid']})
         @decoded_token = JSON::JWT.decode(jwt, @jwk)

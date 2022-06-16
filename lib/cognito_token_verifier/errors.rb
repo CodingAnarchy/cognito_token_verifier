@@ -48,11 +48,12 @@ module CognitoTokenVerifier
 
   class InvalidIss < CognitoTokenVerifier::Error
     def initialize(token)
-      @iss = token.decoded_token['iss']
+      @iss = token.iss
+      @decoded_iss = token.decoded_token['iss']
     end
 
     def message
-      "Invalid token ISS reference. Received #{@iss} while expecting #{CognitoTokenVerifier.config.iss}."
+      "Invalid token ISS reference. Received #{@decoded_iss} while expecting #{@iss}."
     end
   end
 end
