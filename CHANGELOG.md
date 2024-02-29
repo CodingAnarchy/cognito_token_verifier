@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.7.0 (2024-02-28)
+
+  - Add Rails 7.1 support
+  - Test against Ruby 3.2 and 3.3
+  - Remove official support for Rails 5.2
+  - Remove official support for Rails 6.0
+  - Remove testing for Ruby 2.7 & 3.0
+
 ## 0.6.0 (2022-02-24)
 
   - Add Rails 7 support
